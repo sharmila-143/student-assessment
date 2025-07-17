@@ -40,16 +40,15 @@ const Form = () => {
 
   try {
     const response = await fetch(
-      "AKfycbxH3KAJ5207Pht1QvAd3v4z-AwabM-rkCFjlKvHuXc4POCiFq2OdGeJaGsqMzze_UxG4w",
-      {
-          method: "POST",
-          mode: "cors",
-          redirect: "follow",
-          headers: {
-           "Content-Type": "text/plain"
-          },
-  body: JSON.stringify(formData)
-});
+  "https://script.google.com/macros/s/AKfycbxH3KAJ5207Pht1QvAd3v4z-AwabM-rkCFjlKvHuXc4POCiFq2OdGeJaGsqMzze_UxG4w/exec", // ✅ FULL URL HERE
+  {
+    method: "POST",
+    body: JSON.stringify(formData),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+);
 
     if (response.ok) {
       alert("Form submitted successfully!");
