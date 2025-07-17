@@ -43,6 +43,7 @@ const Form = () => {
   "https://script.google.com/macros/s/AKfycbxH3KAJ5207Pht1QvAd3v4z-AwabM-rkCFjlKvHuXc4POCiFq2OdGeJaGsqMzze_UxG4w/exec", // ✅ FULL URL HERE
   {
     method: "POST",
+    mode: 'no-cors',
     body: JSON.stringify(formData),
     headers: {
       "Content-Type": "application/json"
