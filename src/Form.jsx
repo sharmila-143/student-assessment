@@ -30,34 +30,40 @@ const Form = () => {
       [name]: value
     }));
   };
-
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbxH3KAJ5207Pht1QvAd3v4z-AwabM-rkCFjlKvHuXc4POCiFq2OdGeJaGsqMzze_UxG4w/exec", // Replace with your actual deployed URL
-        {
+  const formPayload = new FormData();
+  for (let key in formData) {
+    formPayload.append(key, formData[key]);
+  }
+
+  try {
+    const response = await fetch(
+      "AKfycbxH3KAJ5207Pht1QvAd3v4z-AwabM-rkCFjlKvHuXc4POCiFq2OdGeJaGsqMzze_UxG4w",
+      {
           method: "POST",
-          body: JSON.stringify(formData),
+          mode: "cors",
+          redirect: "follow",
           headers: {
-            "Content-Type": "application/json"
-          }
-        }
-      );
+           "Content-Type": "text/plain"
+          },
+  body: JSON.stringify(formData)
+});
 
-      if (response.ok) {
-        alert("Form submitted successfully!");
-        setFormData(initialFormData);
-      } else {
-        alert("Submission failed. Please try again.");
-      }
-    } catch (error) {
-      alert("Error submitting form.");
-      console.error("Form Error:", error);
+    if (response.ok) {
+      alert("Form submitted successfully!");
+      setFormData(initialFormData);
+    } else {
+      alert("Submission failed. Please try again.");
     }
-  };
+  } catch (error) {
+    alert("Error submitting form.");
+    console.error("Form Error:", error);
+  }
+};
 
+ 
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <h2>Avanthi’s Student Form</h2>
